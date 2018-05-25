@@ -7,7 +7,7 @@
 //
 
 import  UIKit
-import os.log
+//import os.log
 
 class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet weak var nameTextFild: UITextField!
@@ -15,18 +15,14 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     var meal : Meal?
-    
+    var index : Int?
+    var meals = DataService.shared.meals
     @IBOutlet weak var saveButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextFild.delegate = self
-        if let meal = meal {
-            navigationItem.title = meal.name
-            nameTextFild.text = meal.name
-            photoImageView.image = meal.photo
-            ratingControl.rating = meal.rating
+        if let indexPath = index {
+            nameTextFild.text = DataService.shared.meals[index ?? 0].name
         }
-        updateSaveButtonState()
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
@@ -42,21 +38,6 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        super.prepare(for: segue, sender: sender)
-        
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
-        }
-        
-        let name = nameTextFild.text ?? ""
-        let photo = photoImageView.image
-        let rating = ratingControl.rating
-        
-         meal = Meal(name: name, photo: photo, rating: rating)
-    }
       override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

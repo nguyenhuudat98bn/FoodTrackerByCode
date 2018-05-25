@@ -64,7 +64,7 @@
                                     <outlet property="nameLable" destination="tEo-EV-wnj" id="MWa-b2-Cz7"/>
                                     <outlet property="photoImageView" destination="7Mj-Hl-vt3" id="m2F-gb-cW2"/>
                                     <outlet property="ratingControl" destination="N6N-5O-06p" id="5Xs-nF-GPB"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="N9J-zR-WUj"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="" id="N9J-zR-WUj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -81,9 +81,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="searchBar" destination="fIt-be-rAL" id="HwF-ZQ-lJk"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jd2-8v-uxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

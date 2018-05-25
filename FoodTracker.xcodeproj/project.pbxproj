@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57501A8520B7C25A00B048CB /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57501A8420B7C25A00B048CB /* DataService.swift */; };
 		579662F620AACF5500EC0E74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579662F520AACF5500EC0E74 /* AppDelegate.swift */; };
 		579662F820AACF5500EC0E74 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579662F720AACF5500EC0E74 /* MealViewController.swift */; };
 		579662FB20AACF5500EC0E74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579662F920AACF5500EC0E74 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		57501A8420B7C25A00B048CB /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		579662F220AACF5500EC0E74 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579662F520AACF5500EC0E74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		579662F720AACF5500EC0E74 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				579662F520AACF5500EC0E74 /* AppDelegate.swift */,
 				579662F720AACF5500EC0E74 /* MealViewController.swift */,
+				57501A8420B7C25A00B048CB /* DataService.swift */,
 				57D6829D20ABDEAA0061530D /* Meal.swift */,
 				5796631720AAD26F00EC0E74 /* RatingControl.swift */,
 				57D6829F20ABE4910061530D /* MealTableViewCell.swift */,
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57D6829E20ABDEAA0061530D /* Meal.swift in Sources */,
+				57501A8520B7C25A00B048CB /* DataService.swift in Sources */,
 				579662F820AACF5500EC0E74 /* MealViewController.swift in Sources */,
 				5796631820AAD26F00EC0E74 /* RatingControl.swift in Sources */,
 				579662F620AACF5500EC0E74 /* AppDelegate.swift in Sources */,
