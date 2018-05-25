@@ -81,6 +81,9 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         saveButton.isEnabled = !text.isEmpty
     }
     @IBAction func saveTo(_ sender : UIBarButtonItem){
+        nameTextFild.resignFirstResponder()
+        nameTextFild.endEditing(true)
+        
         guard nameTextFild.text != "" else {return}
         if let indexpath = index {
             DataService.shared.meals[indexpath].name = nameTextFild.text!
