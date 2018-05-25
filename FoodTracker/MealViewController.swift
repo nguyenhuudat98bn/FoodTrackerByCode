@@ -22,6 +22,8 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         super.viewDidLoad()
         if let indexPath = index {
             nameTextFild.text = DataService.shared.meals[index ?? 0].name
+            photoImageView.image = DataService.shared.meals[index ?? 0].photo
+            ratingControl.rating = DataService.shared.meals[index ?? 0].rating
         }
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
