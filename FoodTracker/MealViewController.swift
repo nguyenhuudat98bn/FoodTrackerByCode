@@ -25,6 +25,7 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
             photoImageView.image = DataService.shared.meals[indexPath].photo
             ratingControl.rating = DataService.shared.meals[indexPath].rating
         }
+        //navigationController?.navigationBar.isHidden = true
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
@@ -92,6 +93,7 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
         }else{
             guard let meal = Meal(name: nameTextFild.text!, photo: photoImageView.image, rating: ratingControl.rating) else {return}
             DataService.shared.addNumber(from: meal)
+            
         }
         navigationController?.popViewController(animated: true)
         

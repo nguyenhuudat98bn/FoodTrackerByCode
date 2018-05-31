@@ -155,7 +155,7 @@
                     <navigationItem key="navigationItem" title="New Meal" id="TgG-al-3cb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xJL-2Z-Ozt">
                             <connections>
-                                <action selector="cancel:" destination="BYZ-38-t0r" id="6Df-oG-bmo"/>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="eOq-8g-vqn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NEm-z1-v6g">

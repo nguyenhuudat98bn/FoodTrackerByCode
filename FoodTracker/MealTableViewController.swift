@@ -6,19 +6,20 @@
 //  Copyright © 2018 nguyễn hữu đạt. All rights reserved.
 //
 import UIKit
+import os.log
 
-class MealTableViewController: UITableViewController, UISearchResultsUpdating {
+class MealTableViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        meal00 = DataService.shared.meals.filter({ (meal000 : Meal) -> Bool in
-            return meal000.name.contains(searchController.searchBar.text!.lowercased())
+            meal00 = DataService.shared.meals.filter({ (meal000 : Meal) -> Bool in
+            return meal000.name.lowercased().contains(searchController.searchBar.text!.lowercased())
             
         })
         tableView.reloadData()
     }
     
     
-    var meal00 :[Meal] = []
-    let searchController = UISearchController(searchResultsController: nil)
+    var meal00 : [Meal] = []
+    lazy var searchController = UISearchController(searchResultsController: nil)
     
     
     override func viewDidLoad() {
@@ -26,13 +27,16 @@ class MealTableViewController: UITableViewController, UISearchResultsUpdating {
         navigationItem.leftBarButtonItem = editButtonItem
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search Data"
-        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,14 +66,19 @@ class MealTableViewController: UITableViewController, UISearchResultsUpdating {
         
         return cell
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let viewcontroller = segue.destination as? MealViewController else { return}
+        guard let viewcontroller = segue.destination as? MealViewController else {return}
         if let indexpath = tableView.indexPathForSelectedRow {
-            if let index = DataService.shared.meals.index(of: meal00[indexpath.row]) {
-            viewcontroller.index = index
-        }
+            if searchController.isActive {
+                let index = DataService.shared.meals.index(of: meal00[indexpath.row])
+                viewcontroller.index = index
+            } else {
+                viewcontroller.index = indexpath.row
+            }
         }
     }
+    
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -88,13 +97,14 @@ class MealTableViewController: UITableViewController, UISearchResultsUpdating {
                 print(index)
                 DataService.shared.meals.remove(at: index)
                 meal00.remove(at: indexPath.row)
+                saveMeals()
                 tableView.reloadData()
-                
             }
         } else{
             DataService.shared.meals.remove(at: indexPath.row)
             meal00 = DataService.shared.meals
             tableView.reloadData()
+            saveMeals()
             }
         case .none:
             print("hehe")
@@ -103,6 +113,18 @@ class MealTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         
     }
+    private func loadMeals() -> [Meal]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
+    }
     
+    private func saveMeals() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meal00, toFile: Meal.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+
 }
 
