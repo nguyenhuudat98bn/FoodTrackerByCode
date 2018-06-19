@@ -8,7 +8,7 @@
 import UIKit
 import os.log
 
-class MealTableViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
+class MealTableViewController: UITableViewController, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return  }
         meals = searchText.isEmpty ? (DataService.shared.meals) : DataService.shared.meals.filter({ (meal : Meal) -> Bool in
