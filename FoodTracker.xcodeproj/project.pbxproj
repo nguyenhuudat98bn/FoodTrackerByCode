@@ -88,13 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				579662F520AACF5500EC0E74 /* AppDelegate.swift */,
-				579662F720AACF5500EC0E74 /* MealViewController.swift */,
-				57501A8420B7C25A00B048CB /* DataService.swift */,
-				57D6829D20ABDEAA0061530D /* Meal.swift */,
-				5796631720AAD26F00EC0E74 /* RatingControl.swift */,
-				57D6829F20ABE4910061530D /* MealTableViewCell.swift */,
-				57D682A120ABE9ED0061530D /* MealTableViewController.swift */,
 				579662F920AACF5500EC0E74 /* Main.storyboard */,
+				57C7715720D89EC100D55EBE /* Controller */,
+				57C7715820D89ECC00D55EBE /* Model */,
+				57C7715920D89ED400D55EBE /* View */,
 				579662FC20AACF5700EC0E74 /* Assets.xcassets */,
 				579662FE20AACF5700EC0E74 /* LaunchScreen.storyboard */,
 				5796630120AACF5700EC0E74 /* Info.plist */,
@@ -109,6 +106,33 @@
 				5796630C20AACF5700EC0E74 /* Info.plist */,
 			);
 			path = FoodTrackerTests;
+			sourceTree = "<group>";
+		};
+		57C7715720D89EC100D55EBE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				579662F720AACF5500EC0E74 /* MealViewController.swift */,
+				57D682A120ABE9ED0061530D /* MealTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		57C7715820D89ECC00D55EBE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57501A8420B7C25A00B048CB /* DataService.swift */,
+				57D6829D20ABDEAA0061530D /* Meal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		57C7715920D89ED400D55EBE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5796631720AAD26F00EC0E74 /* RatingControl.swift */,
+				57D6829F20ABE4910061530D /* MealTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

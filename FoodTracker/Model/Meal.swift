@@ -7,7 +7,10 @@
 //
 import os.log
 import UIKit
-class Meal: NSObject, NSCoding {
+class Meal: Equatable {
+    static func == (lhs: Meal, rhs: Meal) -> Bool {
+        return (lhs.name == rhs.name)
+    }
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("meals")
 

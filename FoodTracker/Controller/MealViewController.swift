@@ -16,7 +16,6 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
     @IBOutlet weak var ratingControl: RatingControl!
 
     var index : Int?
-    var meals = DataService.shared.meals
     @IBOutlet weak var saveButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,6 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
             photoImageView.image = DataService.shared.meals[indexPath].photo
             ratingControl.rating = DataService.shared.meals[indexPath].rating
         }
-        //navigationController?.navigationBar.isHidden = true
     }
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
@@ -84,7 +82,6 @@ class MealViewController: UIViewController,UITextFieldDelegate,UIImagePickerCont
     @IBAction func saveTo(_ sender : UIBarButtonItem){
         nameTextFild.resignFirstResponder()
         nameTextFild.endEditing(true)
-        
         guard nameTextFild.text != "" else {return}
         if let indexpath = index {
             DataService.shared.meals[indexpath].name = nameTextFild.text!
